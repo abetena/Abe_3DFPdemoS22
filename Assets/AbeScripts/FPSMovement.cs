@@ -25,6 +25,7 @@ public class FPSMovement : MonoBehaviour
     {
         //CheckSphere cast a spehere FROM the groundCheck, AT the ground Disntance, TO the objects in the ground Mask
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        Debug.Log(isGrounded);
 
         //reset velocity is is in the ground
         if (isGrounded && velocity.y < 0)
@@ -43,7 +44,7 @@ public class FPSMovement : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime);
 
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
         }
